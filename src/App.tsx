@@ -2,30 +2,19 @@ import React from "react";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
 
-const arr = [
-  {
-    title: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: 12999,
-    imageUrl: "/img/sneakers/1.jpg",
-  },
-  {
-    title: "Мужские Кроссовки Nike Air Max 270",
-    price: 15600,
-    imageUrl: "/img/sneakers/2.jpg",
-  },
-  {
-    title: "Мужские Кроссовки Nike Blazer Mid Suede",
-    price: 8499,
-    imageUrl: "/img/sneakers/3.jpg",
-  },
-  {
-    title: "Кроссовки Puma X Aka Boku Future Rider",
-    price: 8999,
-    imageUrl: "/img/sneakers/4.jpg",
-  },
-];
-
 const App = () => {
+  const [items, setItems] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    fetch("https://620d589120ac3a4eedbe0c9a.mockapi.io/items")
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+      });
+  }, []);
+
   return (
     <div className="wrapper clear">
       <Header />
@@ -38,7 +27,7 @@ const App = () => {
           </div>
         </div>
         <div className="d-flex">
-          {arr.map((obj) => (
+          {items.map((obj) => (
             <Card
               title={obj.title}
               price={obj.price}
