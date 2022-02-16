@@ -29,7 +29,7 @@ const Header: React.FC = () => {
           <img
             style={{ width: "18px", height: "18px" }}
             src="/img/user.svg"
-            alt="userLogo"
+            alt="User"
           />
         </li>
       </ul>
