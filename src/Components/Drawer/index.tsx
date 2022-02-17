@@ -5,16 +5,17 @@ import GreenButton from "../GreenButton";
 
 type DrawerPropsType = {
   onClose: any;
+  items: any;
 };
 
-const Drawer: React.FC<DrawerPropsType> = (props) => {
+const Drawer: React.FC<DrawerPropsType> = ({ onClose, items = [] }) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
         <h2>
           Корзина{" "}
           <img
-            onClick={props.onClose}
+            onClick={onClose}
             className={styles.removeBtn}
             src="/img/btn-remove.svg"
             alt="Remove"
@@ -22,39 +23,24 @@ const Drawer: React.FC<DrawerPropsType> = (props) => {
         </h2>
 
         <div className={styles.items}>
-          <div className={styles.cartItem}>
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/2.jpg)" }}
-              className={styles.cartItemImg}
-            ></div>
+          {items.map((obj: any) => (
+            <div className={styles.cartItem}>
+              <div
+                style={{ backgroundImage: `url(${obj.imageUrl})` }}
+                className={styles.cartItemImg}
+              ></div>
 
-            <div className={styles.itemFlex}>
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+              <div className={styles.itemFlex}>
+                <p>{obj.title}</p>
+                <b>{obj.price} руб.</b>
+              </div>
+              <img
+                className={styles.removeBtn}
+                src="/img/btn-remove.svg"
+                alt="Remove"
+              />
             </div>
-            <img
-              className={styles.removeBtn}
-              src="/img/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
-
-          <div className={styles.cartItem}>
-            <div
-              style={{ backgroundImage: "url(/img/sneakers/4.jpg)" }}
-              className={styles.cartItemImg}
-            ></div>
-
-            <div className={styles.itemFlex}>
-              <p>Кроссовки Puma X Aka Boku Future Rider</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img
-              className={styles.removeBtn}
-              src="/img/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
+          ))}
         </div>
         <div className={styles.cartTotalBlock}>
           <ul>

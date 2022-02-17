@@ -5,6 +5,7 @@ import Card from "./Components/Card";
 
 const App = () => {
   const [cartOpened, setCartOpened] = React.useState(false);
+  const [cartItems, setCartItems] = React.useState([]);
   const [items, setItems] = React.useState<any[]>([]);
 
   React.useEffect(() => {
@@ -17,9 +18,16 @@ const App = () => {
       });
   }, []);
 
+  const onAddToCart = (obj: any) => {
+    // @ts-ignore
+    setCartItems((prev) => [...prev, obj]);
+  };
+
   return (
     <div className="wrapper clear">
-      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+      {cartOpened ? (
+        <Drawer items={cartItems} onClose={() => setCartOpened(false)} />
+      ) : null}
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content">
         <div className="content_item">
@@ -35,8 +43,8 @@ const App = () => {
               title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
-              onClickFavorite={() => console.log("Добавили в закладки")}
-              onClickPlus={() => console.log("Нажали на плюс")}
+              onFavorite={() => console.log("Добавили в закладки")}
+              onPlus={(obj: any) => onAddToCart(obj)}
             />
           ))}
         </div>
