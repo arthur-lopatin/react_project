@@ -1,4 +1,5 @@
 import React from "react";
+import Drawer from "./Components/Drawer";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
 
@@ -17,6 +18,7 @@ const App = () => {
 
   return (
     <div className="wrapper clear">
+      <Drawer />
       <Header />
       <div className="content">
         <div className="content_item">
