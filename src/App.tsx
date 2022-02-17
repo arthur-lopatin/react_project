@@ -2,11 +2,11 @@ import React from "react";
 import Drawer from "./Components/Drawer";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
+import HeaderContent from "./Components/HeaderContent";
 
 const App = () => {
   const [cartOpened, setCartOpened] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
-  const [searchValue, setSearchValue] = React.useState("");
   const [items, setItems] = React.useState<any[]>([]);
 
   React.useEffect(() => {
@@ -24,11 +24,6 @@ const App = () => {
     setCartItems((prev) => [...prev, obj]);
   };
 
-  // @ts-ignore
-  const onChangeSearchInput = (event) => {
-    setSearchValue(event.target.value);
-  };
-
   return (
     <div className="wrapper clear">
       {cartOpened ? (
@@ -36,21 +31,7 @@ const App = () => {
       ) : null}
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content">
-        <div className="content_item">
-          <h1>
-            {searchValue
-              ? `Поиск по запросу: "${searchValue}"`
-              : "Все кроссовки"}
-          </h1>
-          <div className="search-block">
-            <img src="/img/search.svg" alt="Search" />
-            <input
-              onChange={onChangeSearchInput}
-              value={searchValue}
-              placeholder="Поиск..."
-            />
-          </div>
-        </div>
+        <HeaderContent />
         <div className="d-flex">
           {items.map((item, index) => (
             <Card
