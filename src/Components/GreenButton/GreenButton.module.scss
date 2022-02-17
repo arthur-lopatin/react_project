@@ -10,6 +10,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: background 0.1s ease-in-out;
+  margin-bottom: 60px;
 
   &:hover {
     background: lighten(#9dd558, 5%);

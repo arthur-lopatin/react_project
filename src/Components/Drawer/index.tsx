@@ -6,9 +6,14 @@ import GreenButton from "../GreenButton";
 type DrawerPropsType = {
   onClose: any;
   items: any;
+  onRemove: any;
 };
 
-const Drawer: React.FC<DrawerPropsType> = ({ onClose, items = [] }) => {
+const Drawer: React.FC<DrawerPropsType> = ({
+  onClose,
+  onRemove,
+  items = [],
+}) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
@@ -35,6 +40,7 @@ const Drawer: React.FC<DrawerPropsType> = ({ onClose, items = [] }) => {
                 <b>{obj.price} руб.</b>
               </div>
               <img
+                onClick={() => onRemove(obj.id)}
                 className={styles.removeBtn}
                 src="/img/btn-remove.svg"
                 alt="Remove"
