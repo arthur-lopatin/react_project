@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Card from "./Components/Card";
 
 const App = () => {
+  const [cartOpened, setCartOpened] = React.useState(false);
   const [items, setItems] = React.useState<any[]>([]);
 
   React.useEffect(() => {
@@ -18,8 +19,8 @@ const App = () => {
 
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+      <Header onClickCart={() => setCartOpened(true)} />
       <div className="content">
         <div className="content_item">
           <h1>Все кроссовки</h1>

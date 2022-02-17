@@ -3,13 +3,18 @@ import React from "react";
 import styles from "./Drawer.module.scss";
 import GreenButton from "../GreenButton";
 
-const Drawer: React.FC = () => {
+type DrawerPropsType = {
+  onClose: any;
+};
+
+const Drawer: React.FC<DrawerPropsType> = (props) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
         <h2>
           Корзина{" "}
           <img
+            onClick={props.onClose}
             className={styles.removeBtn}
             src="/img/btn-remove.svg"
             alt="Remove"
@@ -33,6 +38,7 @@ const Drawer: React.FC = () => {
               alt="Remove"
             />
           </div>
+
           <div className={styles.cartItem}>
             <div
               style={{ backgroundImage: "url(/img/sneakers/4.jpg)" }}

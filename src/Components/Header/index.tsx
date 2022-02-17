@@ -2,7 +2,11 @@ import React from "react";
 // @ts-ignore
 import styles from "./Header.module.scss";
 
-const Header: React.FC = () => {
+type HeaderPropsType = {
+  onClickCart: any;
+};
+
+const Header: React.FC<HeaderPropsType> = (props) => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -17,7 +21,7 @@ const Header: React.FC = () => {
         </div>
       </div>
       <ul>
-        <li className={styles.cart}>
+        <li className={styles.cart} onClick={props.onClickCart}>
           <img
             style={{ width: "18px", height: "18px" }}
             src="/img/cart.svg"
