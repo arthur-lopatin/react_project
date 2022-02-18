@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // @ts-ignore
 import styles from "./Header.module.scss";
 
@@ -9,32 +10,43 @@ type HeaderPropsType = {
 const Header: React.FC<HeaderPropsType> = (props) => {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <img
-          style={{ width: "40px", height: "40px" }}
-          src="/img/logo.png"
-          alt="Logo"
-        />
-        <div>
-          <h3>React Sneakers</h3>
-          <p>Магазин лучших кроссовок</p>
+      <Link to="/">
+        <div className={styles.logo}>
+          <img
+            style={{ width: "40px", height: "40px" }}
+            src="/img/logo.png"
+            alt="Logo"
+          />
+          <div>
+            <h3>React Sneakers</h3>
+            <p>Магазин лучших кроссовок</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <ul>
         <li className={styles.cart} onClick={props.onClickCart}>
           <img
             style={{ width: "18px", height: "18px" }}
             src="/img/cart.svg"
-            alt="Cart"
+            alt="Корзина"
           />
           <span>1205 руб.</span>
         </li>
-        <li>
+        <li className={styles.cart}>
           <img
             style={{ width: "18px", height: "18px" }}
-            src="/img/user.svg"
-            alt="User"
+            src="/img/heart.svg"
+            alt="Закладки"
           />
+        </li>
+        <li>
+          <Link to="/favorites">
+            <img
+              style={{ width: "18px", height: "18px" }}
+              src="/img/user.svg"
+              alt="Пользователь"
+            />
+          </Link>
         </li>
       </ul>
     </header>

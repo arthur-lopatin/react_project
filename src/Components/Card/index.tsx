@@ -20,16 +20,26 @@ const Card: React.FC<CardPropsType> = ({
   onPlus,
 }) => {
   const [isAdded, setIsAdded] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(false);
 
   const onClickPlus = () => {
     onPlus({ title, imageUrl, price });
     setIsAdded(!isAdded);
   };
 
+  const onClickFavorite = () => {
+    onFavorite({ title, imageUrl, price });
+    setIsFavorite(!isFavorite);
+  };
+
   return (
-    <div className={styles.card} onClick={onFavorite}>
+    <div className={styles.card}>
       <div className={styles.favorite}>
-        <img src="/img/heart-unliked.svg" alt="Unliked" />
+        <img
+          onClick={onClickFavorite}
+          src={isFavorite ? "/img/heart-liked.svg" : "/img/heart-unliked.svg"}
+          alt="Unliked"
+        />
       </div>
       <img
         style={{ width: "133px", height: "112px" }}
