@@ -27,6 +27,20 @@ const Drawer: React.FC<DrawerPropsType> = ({
           />
         </h2>
 
+        <div className={styles.cartEmpty}>
+          <img
+            style={{ width: "120px", height: "120px" }}
+            src="/img/empty-cart.png"
+            alt="EmptyCart"
+          />
+          <h2>Корзина пустая</h2>
+          <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ</p>
+          <button className={styles.greenButton}>
+            <img src="/img/arrow.svg" alt="Arrow" />
+            Вернуться назад
+          </button>
+        </div>
+
         <div className={styles.items}>
           {items.map((obj: any) => (
             <div className={styles.cartItem}>
