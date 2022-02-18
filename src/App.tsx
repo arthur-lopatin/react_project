@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import axios from "axios";
 import Drawer from "./Components/Drawer";
 import Header from "./Components/Header";
@@ -58,6 +59,9 @@ const App = () => {
         />
       ) : null}
       <Header onClickCart={() => setCartOpened(true)} />
+
+      <Route path="/favorites">Test</Route>
+
       <div className="content">
         <div className="content_item">
           <h1>

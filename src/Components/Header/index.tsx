@@ -32,21 +32,21 @@ const Header: React.FC<HeaderPropsType> = (props) => {
           />
           <span>1205 руб.</span>
         </li>
-        <li className={styles.cart}>
-          <img
-            style={{ width: "18px", height: "18px" }}
-            src="/img/heart.svg"
-            alt="Закладки"
-          />
-        </li>
-        <li>
-          <Link to="/favorites">
+        <Link to="/favorites">
+          <li className={styles.cart}>
             <img
               style={{ width: "18px", height: "18px" }}
-              src="/img/user.svg"
-              alt="Пользователь"
+              src="/img/heart.svg"
+              alt="Закладки"
             />
-          </Link>
+          </li>
+        </Link>
+        <li>
+          <img
+            style={{ width: "18px", height: "18px" }}
+            src="/img/user.svg"
+            alt="Пользователь"
+          />
         </li>
       </ul>
     </header>
