@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Card.module.scss";
 
 type CardPropsType = {
+  id?: any;
   title: string;
   price: number;
   imageUrl: string;
@@ -10,17 +11,20 @@ type CardPropsType = {
   onClickFavorite?: any;
   onClickPlus?: any;
   onPlus: any;
+  favorited?: any;
 };
 
 const Card: React.FC<CardPropsType> = ({
+  id,
   title,
   imageUrl,
   price,
   onFavorite,
   onPlus,
+  favorited = false,
 }) => {
   const [isAdded, setIsAdded] = React.useState(false);
-  const [isFavorite, setIsFavorite] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(favorited);
 
   const onClickPlus = () => {
     onPlus({ title, imageUrl, price });
@@ -28,7 +32,7 @@ const Card: React.FC<CardPropsType> = ({
   };
 
   const onClickFavorite = () => {
-    onFavorite({ title, imageUrl, price });
+    onFavorite({ id, title, imageUrl, price });
     setIsFavorite(!isFavorite);
   };
 
