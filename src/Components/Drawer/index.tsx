@@ -7,15 +7,17 @@ type DrawerPropsType = {
   onClose: any;
   items: any;
   onRemove: any;
+  opened: any;
 };
 
 const Drawer: React.FC<DrawerPropsType> = ({
   onClose,
   onRemove,
   items = [],
+  opened,
 }) => {
   return (
-    <div className={styles.overlay}>
+    <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ""}`}>
       <div className={styles.drawer}>
         <h2>
           Корзина{" "}

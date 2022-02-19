@@ -32,10 +32,16 @@ const App = () => {
   }, []);
 
   const onAddToCart = (obj: any) => {
-    axios
-      .post("https://620d589120ac3a4eedbe0c9a.mockapi.io/cart", obj)
+    // @ts-ignore
+    if (cartItems.find((item) => item.id === obj.id)) {
       // @ts-ignore
-      .then((res) => setCartItems((prev) => [...prev, res.data]));
+      setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
+    } else {
+      axios
+        .post("https://620d589120ac3a4eedbe0c9a.mockapi.io/cart", obj)
+        // @ts-ignore
+        .then((res) => setCartItems((prev) => [...prev, res.data]));
+    }
   };
 
   // @ts-ignore
@@ -68,13 +74,12 @@ const App = () => {
 
   return (
     <div className="wrapper clear">
-      {cartOpened ? (
-        <Drawer
-          items={cartItems}
-          onClose={() => setCartOpened(false)}
-          onRemove={onRemoveItem}
-        />
-      ) : null}
+      <Drawer
+        items={cartItems}
+        onClose={() => setCartOpened(false)}
+        onRemove={onRemoveItem}
+        opened={cartOpened}
+      />
       <Header onClickCart={() => setCartOpened(true)} />
 
       <Route path="/" exact>
