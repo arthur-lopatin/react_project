@@ -58,12 +58,12 @@ const Drawer: React.FC<DrawerPropsType> = ({
                 <li>
                   <span>Итого:</span>
                   <div></div>
-                  <b>21 498 руб. </b>
+                  <b>руб. </b>
                 </li>
                 <li>
                   <span>Скидка 5%:</span>
                   <div></div>
-                  <b>1074 руб. </b>
+                  <b>руб. </b>
                 </li>
               </ul>
               <GreenButton />

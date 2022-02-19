@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AppContext from "../context";
 // @ts-ignore
 import styles from "./Header.module.scss";
 
@@ -8,6 +9,11 @@ type HeaderPropsType = {
 };
 
 const Header: React.FC<HeaderPropsType> = (props) => {
+  // @ts-ignore
+  // const { cartItems } = React.useContext(AppContext);
+  // @ts-ignore
+  // const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+
   return (
     <header className={styles.header}>
       <Link to="/">
@@ -30,7 +36,7 @@ const Header: React.FC<HeaderPropsType> = (props) => {
             src="/img/cart.svg"
             alt="Корзина"
           />
-          <span>1205 руб.</span>
+          <span></span>
         </li>
         <Link to="/favorites">
           <li className={styles.cart}>
