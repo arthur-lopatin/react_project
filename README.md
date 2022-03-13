@@ -1,1 +1,1 @@
-React Sneaker
+React Sneakers
